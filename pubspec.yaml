@@ -15,6 +15,7 @@ dependencies:
   shared_preferences: ^2.2.0
   path_provider: ^2.0.15
   record: ^4.4.4
+  audioplayers: ^5.0.0
 
 
 dev_dependencies:

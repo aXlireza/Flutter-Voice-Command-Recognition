@@ -1,5 +1,6 @@
-// import 'dart:async';
+import 'dart:async';
 // import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
@@ -9,10 +10,221 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:path_provider/path_provider.dart';
 // import 'dart:io';
 import 'package:record/record.dart';
+import 'package:voice_command/audio_player.dart';
+// import 'package:record_example/audio_player.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
+
+class AudioRecorder extends StatefulWidget {
+  final void Function(String path) onStop;
+
+  const AudioRecorder({Key? key, required this.onStop}) : super(key: key);
+
+  @override
+  State<AudioRecorder> createState() => _AudioRecorderState();
+}
+
+class _AudioRecorderState extends State<AudioRecorder> {
+  int _recordDuration = 0;
+  Timer? _timer;
+  final _audioRecorder = Record();
+  StreamSubscription<RecordState>? _recordSub;
+  RecordState _recordState = RecordState.stop;
+  StreamSubscription<Amplitude>? _amplitudeSub;
+  Amplitude? _amplitude;
+
+  @override
+  void initState() {
+    _recordSub = _audioRecorder.onStateChanged().listen((recordState) {
+      setState(() => _recordState = recordState);
+    });
+
+    _amplitudeSub = _audioRecorder
+        .onAmplitudeChanged(const Duration(milliseconds: 300))
+        .listen((amp) => setState(() => _amplitude = amp));
+
+    super.initState();
+  }
+
+  Future<void> _start() async {
+    try {
+      if (await _audioRecorder.hasPermission()) {
+        // We don't do anything with this but printing
+        final isSupported = await _audioRecorder.isEncoderSupported(
+          AudioEncoder.aacLc,
+        );
+        if (kDebugMode) {
+          print('${AudioEncoder.aacLc.name} supported: $isSupported');
+        }
+
+        // final devs = await _audioRecorder.listInputDevices();
+        // final isRecording = await _audioRecorder.isRecording();
+
+        await _audioRecorder.start();
+        _recordDuration = 0;
+
+        _startTimer();
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  Future<void> _stop() async {
+    _timer?.cancel();
+    _recordDuration = 0;
+
+    final path = await _audioRecorder.stop();
+
+    if (path != null) {
+      widget.onStop(path);
+    }
+  }
+
+  Future<void> _pause() async {
+    _timer?.cancel();
+    await _audioRecorder.pause();
+  }
+
+  Future<void> _resume() async {
+    _startTimer();
+    await _audioRecorder.resume();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                _buildRecordStopControl(),
+                const SizedBox(width: 20),
+                _buildPauseResumeControl(),
+                const SizedBox(width: 20),
+                _buildText(),
+              ],
+            ),
+            if (_amplitude != null) ...[
+              const SizedBox(height: 40),
+              Text('Current: ${_amplitude?.current ?? 0.0}'),
+              Text('Max: ${_amplitude?.max ?? 0.0}'),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _recordSub?.cancel();
+    _amplitudeSub?.cancel();
+    _audioRecorder.dispose();
+    super.dispose();
+  }
+
+  Widget _buildRecordStopControl() {
+    late Icon icon;
+    late Color color;
+
+    if (_recordState != RecordState.stop) {
+      icon = const Icon(Icons.stop, color: Colors.red, size: 30);
+      color = Colors.red.withOpacity(0.1);
+    } else {
+      final theme = Theme.of(context);
+      icon = Icon(Icons.mic, color: theme.primaryColor, size: 30);
+      color = theme.primaryColor.withOpacity(0.1);
+    }
+
+    return ClipOval(
+      child: Material(
+        color: color,
+        child: InkWell(
+          child: SizedBox(width: 56, height: 56, child: icon),
+          onTap: () {
+            (_recordState != RecordState.stop) ? _stop() : _start();
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPauseResumeControl() {
+    if (_recordState == RecordState.stop) {
+      return const SizedBox.shrink();
+    }
+
+    late Icon icon;
+    late Color color;
+
+    if (_recordState == RecordState.record) {
+      icon = const Icon(Icons.pause, color: Colors.red, size: 30);
+      color = Colors.red.withOpacity(0.1);
+    } else {
+      final theme = Theme.of(context);
+      icon = const Icon(Icons.play_arrow, color: Colors.red, size: 30);
+      color = theme.primaryColor.withOpacity(0.1);
+    }
+
+    return ClipOval(
+      child: Material(
+        color: color,
+        child: InkWell(
+          child: SizedBox(width: 56, height: 56, child: icon),
+          onTap: () {
+            (_recordState == RecordState.pause) ? _resume() : _pause();
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildText() {
+    if (_recordState != RecordState.stop) {
+      return _buildTimer();
+    }
+
+    return const Text("Waiting to record");
+  }
+
+  Widget _buildTimer() {
+    final String minutes = _formatNumber(_recordDuration ~/ 60);
+    final String seconds = _formatNumber(_recordDuration % 60);
+
+    return Text(
+      '$minutes : $seconds',
+      style: const TextStyle(color: Colors.red),
+    );
+  }
+
+  String _formatNumber(int number) {
+    String numberStr = number.toString();
+    if (number < 10) {
+      numberStr = '0$numberStr';
+    }
+
+    return numberStr;
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      setState(() => _recordDuration++);
+    });
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,10 +245,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  // final void Function(String path) onStop;
   final String title;
 
-  // const MyHomePage({Key ? key, required this.title, required this.onStop}) : ({key, required this.title, required this.onStop});
   const MyHomePage({super.key, required this.title});
 
   @override
@@ -49,6 +259,10 @@ class _MyHomePageState extends State<MyHomePage>
   final _textController1 = TextEditingController();
   final _textController2 = TextEditingController();
 
+  // MIC
+  bool showPlayer = false;
+  String? audioPath;
+
 
   @override
   void initState() {
@@ -57,15 +271,19 @@ class _MyHomePageState extends State<MyHomePage>
     getData("No2");
     getData("SysStatus");
 
+    // MIC
+    showPlayer = false;
+    super.initState();
+
   }
 
 
   void _sendSMS(String message, List<String> recipents) async {
-    String _result = await sendSMS(message: message, recipients: recipents, sendDirect:true )
+    String result = await sendSMS(message: message, recipients: recipents, sendDirect:true )
         .catchError((onError) {
       print(onError);
     });
-    print(_result);
+    print(result);
   }
 
   _callNumber() async{
@@ -90,12 +308,15 @@ class _MyHomePageState extends State<MyHomePage>
 
   void getData(Key) async{
     final SharedPreferences pref = await SharedPreferences.getInstance();
-    if(Key=="No1")
+    if(Key=="No1") {
       phoneValue1 = pref.getString(Key);
-    if(Key=="No2")
+    }
+    if(Key=="No2") {
       phoneValue2 = pref.getString(Key);
-    if(Key=="SysStatus")
+    }
+    if(Key=="SysStatus") {
       SysStatus = pref.getString(Key);
+    }
     setState(() {
 
     });
@@ -108,7 +329,7 @@ class _MyHomePageState extends State<MyHomePage>
 
 
   // MIC Controller ####################################################################################### MIC Controller
-  
+
   //*********************************************************
 
   @override
@@ -121,7 +342,7 @@ class _MyHomePageState extends State<MyHomePage>
     // than having to individually change instances of widgets.
 
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -145,15 +366,38 @@ class _MyHomePageState extends State<MyHomePage>
           // in the middle of the parent.
           child: Column(
             children: [
-              TabBar(
+              const TabBar(
                 tabs: [
+                  Tab(icon: Icon(Icons.voice_chat, color: Colors.deepOrange),),
                   Tab(icon: Icon(Icons.home, color: Colors.deepOrange),),
                   Tab(icon: Icon(Icons.account_circle, color: Colors.deepOrange),),
                 ],
               ),
               Expanded(
                 child: TabBarView(children:[
-
+                  Container(
+                    child: Center(
+                      child: showPlayer
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25),
+                          child: AudioPlayer(
+                            source: audioPath!,
+                            onDelete: () {
+                              setState(() => showPlayer = false);
+                            },
+                          ),
+                        )
+                      : AudioRecorder(
+                          onStop: (path) {
+                            if (kDebugMode) print('Recorded file path: $path');
+                            setState(() {
+                              audioPath = path;
+                              showPlayer = true;
+                            });
+                          },
+                        ),
+                    ),
+                  ),
                   //1st tab
                   Container(
                     child: Center(
@@ -184,7 +428,7 @@ class _MyHomePageState extends State<MyHomePage>
                                 setData("SysStatus", "Enabled!");
                                 getData("SysStatus");
                               });
-                            },child: Text("Enable",style: TextStyle(fontSize: 20),),
+                            },child: const Text("Enable",style: TextStyle(fontSize: 20),),
 
 
                             style: ElevatedButton.styleFrom(
@@ -203,7 +447,7 @@ class _MyHomePageState extends State<MyHomePage>
                                 setData("SysStatus", "Disabled!");
                                 getData("SysStatus");
                               });
-                            },child: Text("Disable",style: TextStyle(fontSize: 20),),
+                            },child: const Text("Disable",style: TextStyle(fontSize: 20),),
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.orangeAccent,
                                 onPrimary: Colors.white,
@@ -220,7 +464,7 @@ class _MyHomePageState extends State<MyHomePage>
                                 SysStatus = "Enabled!";
                               });
                             },
-                            child: Text("Make Call",style: TextStyle(fontSize: 20),),
+                            child: const Text("Make Call",style: TextStyle(fontSize: 20),),
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.orangeAccent,
                                 onPrimary: Colors.white,
@@ -235,7 +479,7 @@ class _MyHomePageState extends State<MyHomePage>
                     ),
                   ),
 
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%2nd tab
+                  //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%2nd tab
 
                   Container(
                     child: Center(
@@ -285,7 +529,7 @@ class _MyHomePageState extends State<MyHomePage>
 
                                     ),
 
-                                    child: Text("Submit"),
+                                    child: const Text("Submit"),
                                   ),
 
                                   const SizedBox(width: 30,),
@@ -308,7 +552,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     ),
 
 
-                                    child: Text("Delete"),
+                                    child: const Text("Delete"),
                                   ),
                                 ]
                             ),
@@ -316,11 +560,11 @@ class _MyHomePageState extends State<MyHomePage>
                             Expanded(
                               child: Container(
                                 child: Center(
-                                  child: phoneValue1 == null ? Text("No number 1 avilable") : Text(phoneValue1!),
+                                  child: phoneValue1 == null ? const Text("No number 1 avilable") : Text(phoneValue1!),
                                 ),
                               ),
                             ),
-//********************2nd********************
+                            //********************2nd********************
                             TextField(
                               controller: _textController2,
                               decoration: const InputDecoration(
@@ -353,7 +597,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     ),
 
 
-                                    child: Text("Submit"),
+                                    child: const Text("Submit"),
                                   ),
 
                                   const SizedBox(width: 30,),
@@ -376,7 +620,7 @@ class _MyHomePageState extends State<MyHomePage>
                                     ),
 
 
-                                    child: Text("Delete"),
+                                    child: const Text("Delete"),
                                   ),
                                 ]
                             ),
@@ -384,11 +628,11 @@ class _MyHomePageState extends State<MyHomePage>
                             Expanded(
                               child: Container(
                                 child: Center(
-                                  child: phoneValue2 == null ? Text("No number 2 avilable") : Text(phoneValue2!),
+                                  child: phoneValue2 == null ? const Text("No number 2 avilable") : Text(phoneValue2!),
                                 ),
                               ),
                             ),
-//********************2nd********************
+                            //********************2nd********************
                             ElevatedButton(
                               onPressed: (){
                                 setState(() {
