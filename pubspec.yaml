@@ -1,0 +1,26 @@
+name: voice_command
+description: A new Flutter project.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_phone_direct_caller: ^2.1.1
+  flutter_sms: ^2.3.3
+  mic_stream: ^0.6.5
+  shared_preferences: ^2.2.0
+  path_provider: ^2.0.15
+  record: ^4.4.4
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
