@@ -2,21 +2,10 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'dart:io';
-
-import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
-import 'package:wav/wav.dart';
-
-import 'package:wav/wav_io.dart';
 import 'package:record/record.dart';
 import 'audio_player.dart';
-import 'package:fftea/fftea.dart';
-
-import 'dart:math' as math;
-import 'dart:typed_data';
-
-import 'package:fftea/impl.dart';
+import 'spectrogram.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,79 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
 
     showPlayer = false;
-    predict();
   }
-
-
-  void predict() async {
-    final options = tfl.InterpreterOptions();
-
-    if (Platform.isAndroid) options.addDelegate(tfl.XNNPackDelegate());
-    if (Platform.isIOS) options.addDelegate(tfl.GpuDelegate());
-
-    final labelTxt = await rootBundle.loadString('assets/labels.txt');
-    labels = labelTxt.split('\n');
-    
-    // Load model from assets
-    // interpreter = await Interpreter.fromAsset('assets/model.tflite', options: options);
-    interpreter = await tfl.Interpreter.fromAsset('assets/model.tflite');
-    inputTensor = interpreter.getInputTensors().first;
-    outputTensor = interpreter.getOutputTensors().first;
-  }
-
-
-  // def get_spectrogram(waveform):
-  //   spectrogram = tf.signal.stft(waveform, frame_length=255, frame_step=128)
-  //   spectrogram = tf.abs(spectrogram)
-  //   spectrogram = spectrogram[..., tf.newaxis]
-  //   return spectrogram
-
-
-  // def processaudio(address, audiodata):
-  //   x = tf.io.read_file(str(address)) if address else audiodata
-  //   x, sample_rate = tf.audio.decode_wav(x, desired_channels=1, desired_samples=16000,)
-  //   x = tf.squeeze(x, axis=-1)
-  //   x = get_spectrogram(x)
-  //   x = x[tf.newaxis,...]
-  //   return x
-
-
-void get_spectrogram(String path) async {
-  // final wav = await Wav.readFile(path);
-  // final audio = normalizeRmsVolume(wav.toMono(), 0.3);
-  // const chunkSize = 2048;
-  // const buckets = 120;
-
-  // final FFT _fft;
-  // final Float64List? _win;
-  // final Float64x2List _chunk;
-  
-  // final chunkSize = _fft.size;
-  // if (chunkStride <= 0) chunkStride = chunkSize;
-  // for (int i = 0;; i += chunkStride) {
-  //   final i2 = i + chunkSize;
-  //   if (i2 > input.length) {
-  //     int j = 0;
-  //     final stop = input.length - i;
-  //     for (; j < stop; ++j) {
-  //       _chunk[j] = Float64x2(input[i + j], 0);
-  //     }
-  //     for (; j < chunkSize; ++j) {
-  //       _chunk[j] = Float64x2.zero();
-  //     }
-  //   } else {
-  //     for (int j = 0; j < chunkSize; ++j) {
-  //       _chunk[j] = Float64x2(input[i + j], 0);
-  //     }
-  //   }
-  //   _win?.inPlaceApplyWindow(_chunk);
-  //   _fft.inPlaceFft(_chunk);
-  //   reportChunk(_chunk);
-  //   if (i2 >= input.length) {
-  //     break;
-  //   }
-  // }
-}
 
 
   @override
@@ -151,11 +68,6 @@ void get_spectrogram(String path) async {
           : AudioRecorder(
               onStop: (path) {
                 print('Recorded file path: $path');
-                // preprocess('assets/0.wav');
-
-                // print(inputTensor);
-                interpreter.run(inputTensor, outputTensor);
-                print(outputTensor);
                 setState(() {
                   audioPath = path;
                   showPlayer = true;
@@ -223,6 +135,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
     final path = await _audioRecorder.stop();
 
     if (path != null) {
+      var spectrogramArray = await getSpectrogram(path);
       widget.onStop(path);
     }
   }
