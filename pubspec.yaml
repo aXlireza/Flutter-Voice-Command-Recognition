@@ -33,3 +33,6 @@ flutter:
     - assets/model.tflite
     - assets/labels.txt
     - assets/0.wav
+    - assets/google_teach_machine_label.txt
+    - assets/google_teach_machine_model.tflite
+    - assets/sample_audio_44k_mono.wav
