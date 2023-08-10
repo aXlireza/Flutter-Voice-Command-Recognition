@@ -6,17 +6,11 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
-import 'package:wav/wav.dart';
 
-import 'package:wav/wav_io.dart';
 import 'package:record/record.dart';
 import 'audio_player.dart';
-import 'package:fftea/fftea.dart';
 
-import 'dart:math' as math;
-import 'dart:typed_data';
 
-import 'package:fftea/impl.dart';
 
 void main() {
   runApp(const MyApp());
