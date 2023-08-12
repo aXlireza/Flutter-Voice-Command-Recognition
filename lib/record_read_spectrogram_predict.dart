@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:record/record.dart';
 import 'audio_player.dart';
+import 'helper/audio_classification.dart';
 import 'spectrogram.dart';
 
 void main() {
@@ -106,6 +107,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
   StreamSubscription<Amplitude>? _amplitudeSub;
   Amplitude? _amplitude;
 
+  VoiceCommandRecognition? voiceCommandRecognition;
+
   @override
   void initState() {
     _recordSub = _audioRecorder.onStateChanged().listen((recordState) {
@@ -117,6 +120,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
         .listen((amp) => setState(() => _amplitude = amp));
 
     setupInterpreter();
+
+
+    voiceCommandRecognition = VoiceCommandRecognition();
+
     super.initState();
   }
 
@@ -142,7 +149,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
       if (await _audioRecorder.hasPermission()) {
         await _audioRecorder.start(
             encoder: AudioEncoder.wav,
-            numChannels: 1);
+            numChannels: 1,
+            samplingRate: 16000);
         _recordDuration = 0;
 
         _startTimer();
@@ -161,9 +169,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
     final path = await _audioRecorder.stop();
 
     if (path != null) {
-      var spectrogramArray = await getSpectrogram(path);
+      // var spectrogramArray = await getSpectrogram(path);
+      voiceCommandRecognition!.analyseAudio(path);
       // var spectrogramTensor = tfl.Tensor.fillShape(o, dim, shape)
-      interpreter.run(spectrogramArray, outputTensor);
+      // interpreter.run(spectrogramArray, outputTensor);
       print(outputTensor);
       widget.onStop(path);
     }

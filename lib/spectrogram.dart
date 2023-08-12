@@ -49,9 +49,9 @@ String gradient(double power) {
   return levels[index];
 }
 
-Future<List<List<double>>> getSpectrogram(String path) async {
-  List<double> spectrogramArrayTmp = [];
-  List<List<double>> spectrogramArray = [];
+Future<List<List<List<double>>>> getSpectrogram(String path) async {
+  List<List<double>> spectrogramArrayTmp = [];
+  List<List<List<double>>> spectrogramArray = [];
   final wav = await Wav.readFile(path);
   final audio = normalizeRmsVolume(wav.toMono(), 0.3);
   const chunkSize = 2048;
@@ -74,7 +74,7 @@ Future<List<List<double>>> getSpectrogram(String path) async {
           power /= i1 - i0;
         }
         // stdout.write(gradient(power));
-        spectrogramArrayTmp.add(power);
+        spectrogramArrayTmp.add([power]);
         i0 = i1;
       }
       spectrogramArray.add(spectrogramArrayTmp);

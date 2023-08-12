@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:tflite_flutter/tflite_flutter.dart' as tfl;
 import 'package:record/record.dart';
 import 'audio_player.dart';
-import 'spectrogram.dart';
 
 void main() {
   runApp(const MyApp());
