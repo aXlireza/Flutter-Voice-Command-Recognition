@@ -22,6 +22,12 @@ import 'package:tflite_flutter/tflite_flutter.dart';
 
 import '../spectrogram.dart';
 
+class PredictionResults {
+  final String theLabel;
+  final double theValue;
+  PredictionResults(this.theLabel, this.theValue);
+}
+
 class VoiceCommandRecognition {
   static const String _modelPath = 'assets/model.tflite';
   static const String _labelPath = 'assets/labels.txt';
@@ -60,17 +66,16 @@ class VoiceCommandRecognition {
     _labels = labelsRaw.split('\n');
   }
 
-  void analyseAudio(String audioPath) {
+  Future<PredictionResults> analyseAudio(String audioPath) async {
 
-    final output = _runInference(audioPath);
+    PredictionResults output = await _runInference(audioPath);
 
     log('Processing outputs...');
 
-
-    // return img.encodeJpg(imageInput);
+    return output;
   }
 
-  Future<List<Object>> _runInference(
+  Future<PredictionResults> _runInference(
     String path,
   ) async {
     log('Running inference...');
@@ -92,6 +97,9 @@ class VoiceCommandRecognition {
     double largestNumber = entryWithLargestNumber.value;
 
     print(_labels![largestNumberIndex]);
-    return ['a'];
+    return PredictionResults(
+      _labels![largestNumberIndex],
+      output[0][largestNumberIndex]
+    );
   }
 }
