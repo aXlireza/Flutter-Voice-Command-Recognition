@@ -3,7 +3,7 @@ import 'dart:core';
 import 'audio_player.dart';
 import 'package:flutter/material.dart';
 import 'helper/audio_classification.dart';
-import 'helper/realtime_handler.dart';
+import 'helper/realtime_recorder_handler.dart';
 
 void main() {
   runApp(const MyApp());
@@ -92,7 +92,6 @@ class _AudioRecorderState extends State<AudioRecorder> {
   RealtimeHandler realtimeHandler = RealtimeHandler();
 
   void updateDynamicText() async {
-    //   String? audiopath = await audioHalper.stop();
     //   PredictionResults prediction = await voiceCommandRecognition!.analyseAudio(audiopath!);
     //   // setState(() {
     //     // theLabel = "Updated Text at ${DateTime.now()}";
@@ -101,8 +100,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
     //   // });
     await realtimeHandler.recordHandler();
     final files = await realtimeHandler.realtimeDirContent();
-  
-    print(files);
+    print(files.length);
   }
 
   void startInterval() {

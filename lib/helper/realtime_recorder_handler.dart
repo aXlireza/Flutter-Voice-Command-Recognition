@@ -8,6 +8,13 @@ class RealtimeHandler {
   AudioHalper audioHalper = AudioHalper();
   int CHUPLENGTH = 6;
 
+  get getaudioHalper => audioHalper;
+
+  Future<String> directoryPath() async{
+    Directory directory = await getApplicationDocumentsDirectory();
+    return "${directory.path}/realtime";
+  }
+
   Future<Directory> handleRealtimeDir({String path=""}) async{
     // address to realtime dir, create if not found, drop any file in the directory
     Directory directory = await getApplicationDocumentsDirectory();
@@ -31,38 +38,40 @@ class RealtimeHandler {
 
   Future<void> recordHandler() async {
     int recordlength = 1000~/CHUPLENGTH;
-    Directory realtimeDir = await handleRealtimeDir(path:'tmp');
-    audioHalper.start('${realtimeDir.path}/$recordedRealtimeCount.wav');
-    recordedRealtimeCount++;
-
-    // check the realtime_dir length and remove the overflows
-    List<FileSystemEntity> files = realtimeDir.listSync();
-    files.sort((a, b) {
-      String filenameA = a.uri.pathSegments.last;
-      String filenameB = b.uri.pathSegments.last;
-      int numericA = int.tryParse(filenameA.split('.').first) ?? 0;
-      int numericB = int.tryParse(filenameB.split('.').first) ?? 0;
-      return numericA.compareTo(numericB);
+    await recordChunk().timeout(Duration(milliseconds: recordlength), onTimeout: () async => {
+      await audioHalper.stop()
     });
+    await chunksController();
+    await generateRealtimeWav();
+  }
+
+  Future<void> recordChunk() async {
+    Directory realtimeDir = await handleRealtimeDir(path:'tmp');
+    await audioHalper.start('${realtimeDir.path}/$recordedRealtimeCount.wav');
+    recordedRealtimeCount++;
+  }
+
+  Future<void> chunksController() async{
+    // check the realtime_dir length and remove the overflows
+    Directory realtimeDir = await handleRealtimeDir(path:'tmp');
+    List<FileSystemEntity> files = realtimeDir.listSync();
+    sortfiles(files);
     if (files.length >= CHUPLENGTH) {
       int overflowCount = files.length-CHUPLENGTH;
       for (var i = 0; i < overflowCount; i++) {
         await files[i].delete();
       }
     }
-    // CHECKPOINT
-    await generateRealtimeWav();
-
-    Directory directory = await getApplicationDocumentsDirectory();
-    String realtimeDirAddress = "${directory.path}/realtime";
-    Directory tmprealtimeDir = Directory(realtimeDirAddress);
-    List<FileSystemEntity> newfiles = tmprealtimeDir.listSync();
-    print(newfiles.length);
   }
 
   Future<List<FileSystemEntity>> realtimeDirContent() async {
     Directory realtimeDir = await handleRealtimeDir(path: 'tmp');
     List<FileSystemEntity> files = realtimeDir.listSync();
+    sortfiles(files);
+    return files;
+  }
+
+  void sortfiles(List<FileSystemEntity> files) {
     files.sort((a, b) {
       String filenameA = a.uri.pathSegments.last;
       String filenameB = b.uri.pathSegments.last;
@@ -70,19 +79,12 @@ class RealtimeHandler {
       int numericB = int.tryParse(filenameB.split('.').first) ?? 0;
       return numericA.compareTo(numericB);
     });
-    return files;
   }
 
   Future<List<FileSystemEntity>> allRealtimeDirContent() async {
     Directory realtimeDir = await handleRealtimeDir();
     List<FileSystemEntity> files = realtimeDir.listSync();
-    files.sort((a, b) {
-      String filenameA = a.uri.pathSegments.last;
-      String filenameB = b.uri.pathSegments.last;
-      int numericA = int.tryParse(filenameA.split('.').first) ?? 0;
-      int numericB = int.tryParse(filenameB.split('.').first) ?? 0;
-      return numericA.compareTo(numericB);
-    });
+    sortfiles(files);
     return files;
   }
 
@@ -172,12 +174,11 @@ class RealtimeHandler {
     removeFiles(files);
   }
 
-  get getaudioHalper => audioHalper;
-
   Future<void> initState() async {
     await emptyRealtimeDir();
     audioHalper.initState();
   }
+  
   void dispose() {
     audioHalper.dispose();
   }
