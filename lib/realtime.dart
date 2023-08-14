@@ -85,10 +85,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
   bool wasItPlaying = false;
   bool actionable = false;
 
-  int CONFIDENCE_RATE = 1;
   String theLabel = '';
   double theValue = 0.0;
-
 
   VoiceCommandRecognition? voiceCommandRecognition;
   RealtimeHandler realtimeHandler = RealtimeHandler();
@@ -103,6 +101,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
     //   // });
     await realtimeHandler.recordHandler();
     final files = await realtimeHandler.realtimeDirContent();
+  
     print(files);
   }
 
