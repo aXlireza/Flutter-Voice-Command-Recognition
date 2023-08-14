@@ -3,28 +3,31 @@ import 'dart:typed_data';
 import 'package:path_provider/path_provider.dart';
 import 'audio_handler.dart';
 
-class RealtimeHandler {
+class RealtimeRecordingHandler {
   int recordedRealtimeCount = 0;
   AudioHalper audioHalper = AudioHalper();
   int CHUPLENGTH = 6;
 
   get getaudioHalper => audioHalper;
 
-  Future<String> directoryPath() async{
+  Future<String> directoryPath({String path=""}) async{
     Directory directory = await getApplicationDocumentsDirectory();
-    return "${directory.path}/realtime";
+    String address = "${directory.path}/realtime";
+    if (path.isNotEmpty) address+="/$path";
+    return address;
   }
 
   Future<Directory> handleRealtimeDir({String path=""}) async{
-    // address to realtime dir, create if not found, drop any file in the directory
-    Directory directory = await getApplicationDocumentsDirectory();
-    String realtimeDirAddress = "${directory.path}/realtime";
-    if (path.isNotEmpty) realtimeDirAddress+="/$path";
+    String realtimeDirAddress = await directoryPath(path:path);
+    Directory realtimeDir = Directory(realtimeDirAddress);
+    return realtimeDir;
+  }
+
+  Future<void> setupRealtimeDir() async {
+    String realtimeDirAddress = await directoryPath();
     Directory realtimeDir = Directory(realtimeDirAddress);
 
-    if (realtimeDir.existsSync()) {
-      // EMPTY THE FILES
-    } else {
+    if (!realtimeDir.existsSync()) {
       realtimeDir.create()
       .then((Directory directory) {
         print('Directory created at ${directory.path}');
@@ -33,21 +36,22 @@ class RealtimeHandler {
         print('Error creating directory: $error');
       });
     }
-    return realtimeDir;
   }
 
   Future<void> recordHandler() async {
-    int recordlength = 1000~/CHUPLENGTH;
-    await recordChunk().timeout(Duration(milliseconds: recordlength), onTimeout: () async => {
-      await audioHalper.stop()
-    });
+    print("recordHandler INIT");
+    await recordChunk();
     await chunksController();
     await generateRealtimeWav();
+    print("recordHandler DONE");
   }
 
   Future<void> recordChunk() async {
     Directory realtimeDir = await handleRealtimeDir(path:'tmp');
+    int recordlength = 1000~/CHUPLENGTH;
     await audioHalper.start('${realtimeDir.path}/$recordedRealtimeCount.wav');
+    await Future.delayed(Duration(milliseconds: recordlength));
+    await audioHalper.stop();
     recordedRealtimeCount++;
   }
 
@@ -175,6 +179,7 @@ class RealtimeHandler {
   }
 
   Future<void> initState() async {
+    await setupRealtimeDir();
     await emptyRealtimeDir();
     audioHalper.initState();
   }

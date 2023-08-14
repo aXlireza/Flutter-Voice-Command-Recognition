@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:core';
-import 'audio_player.dart';
+import 'dart:io';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audioplayers/audioplayers.dart' as ap;
+import 'helper/audio_player.dart';
 import 'package:flutter/material.dart';
 import 'helper/audio_classification.dart';
 import 'helper/realtime_recorder_handler.dart';
@@ -31,57 +34,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool showPlayer = false;
-  String? audioPath;
-
-  @override
-  void initState() {
-    super.initState();
-
-    showPlayer = false;
-  }
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Center(
-          child: showPlayer
-          ? Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: AudioPlayer(
-                source: audioPath!,
-                onDelete: () {
-                  setState(() => showPlayer = false);
-                },
-              ),
-            )
-          : AudioRecorder(
-              onStop: (path) {
-                print('Recorded file path: $path');
-                setState(() {
-                  audioPath = path;
-                  showPlayer = true;
-                });
-              },
-            ),
-        ),
-      ),
-    );
-  }
-}
-
-class AudioRecorder extends StatefulWidget {
-  final void Function(String path) onStop;
-
-  const AudioRecorder({Key? key, required this.onStop}) : super(key: key);
-
-  @override
-  State<AudioRecorder> createState() => _AudioRecorderState();
-}
-
-class _AudioRecorderState extends State<AudioRecorder> {
   bool wasItPlaying = false;
   bool actionable = false;
 
@@ -89,43 +41,56 @@ class _AudioRecorderState extends State<AudioRecorder> {
   double theValue = 0.0;
 
   VoiceCommandRecognition? voiceCommandRecognition;
-  RealtimeHandler realtimeHandler = RealtimeHandler();
+  RealtimeRecordingHandler realtimeRecordingHandler = RealtimeRecordingHandler();
 
-  void updateDynamicText() async {
-    //   PredictionResults prediction = await voiceCommandRecognition!.analyseAudio(audiopath!);
-    //   // setState(() {
-    //     // theLabel = "Updated Text at ${DateTime.now()}";
-    //   theLabel = prediction.theLabel;
-    //   theValue = prediction.theValue;
-    //   // });
-    await realtimeHandler.recordHandler();
-    final files = await realtimeHandler.realtimeDirContent();
-    print(files.length);
+  final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
+
+  Future<void> updateDynamicText() async {
+    await realtimeRecordingHandler.recordHandler();
+    final realtimepath = await realtimeRecordingHandler.directoryPath();
+    PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/realtime.wav");
+    setState(() {
+      theLabel = prediction.theLabel;
+      theValue = prediction.theValue;
+    });
   }
 
   void startInterval() {
-    const Duration initialDelay = Duration(seconds: 1); // Initial delay before first execution
-    const Duration intervalDuration = Duration(seconds: 1); // Interval between executions
+    const Duration intervalDelay = Duration(seconds: 1);
 
-    Timer(initialDelay, () {
-      // Start the interval
-      updateDynamicText(); // Update the text immediately
-      Timer.periodic(intervalDuration, (timer) {
-        updateDynamicText(); // Update the text at each interval
+    Timer(intervalDelay, () {
+      updateDynamicText();
+      Timer.periodic(intervalDelay, (timer) {
+        updateDynamicText();
       });
     });
   }
 
-  @override
-  void initState() {
-    realtimeHandler.initState();
-    voiceCommandRecognition = VoiceCommandRecognition();
-    startInterval();
-
-    super.initState();
+  void startWhileLoop() async {
+    // while (true) {
+      // await updateDynamicText();
+      final realtimepath = await realtimeRecordingHandler.directoryPath();
+      // AudioPlayer(
+      //   source: "$realtimepath/realtime.wav", onDelete: () {  },
+      // );
+    // }
   }
 
-  
+  void playRealtimeAudio() async {
+    final realtimepath = await realtimeRecordingHandler.directoryPath();
+    _audioPlayer.play(ap.DeviceFileSource("$realtimepath/realtime.wav"));
+    // AudioPlayer(
+    //   source: "$realtimepath/realtime.wav", onDelete: () {  },
+    // );
+  }
+
+  @override
+  void initState() {
+    realtimeRecordingHandler.initState();
+    voiceCommandRecognition = VoiceCommandRecognition();
+    super.initState();
+    // startWhileLoop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +99,37 @@ class _AudioRecorderState extends State<AudioRecorder> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ClipOval(
+              child: Material(
+                child: InkWell(
+                  child: SizedBox(width: 56, height: 56, child: Text('record chunk')),
+                  onTap: () async {
+                    await realtimeRecordingHandler.recordHandler();
+                  },
+                ),
+              ),
+            ),
+            ClipOval(
+              child: Material(
+                child: InkWell(
+                  child: SizedBox(width: 56, height: 56, child: Text('play realtime')),
+                  onTap: () {
+                    playRealtimeAudio();
+                  },
+                ),
+              ),
+            ),
+            ClipOval(
+              child: Material(
+                child: InkWell(
+                  child: SizedBox(width: 56, height: 56, child: Text('get tmp files')),
+                  onTap: () async {
+                    List<FileSystemEntity> files = await realtimeRecordingHandler.realtimeDirContent();
+                    print(files);
+                  },
+                ),
+              ),
+            ),
             Text('label: $theLabel'),
             Text('confidence: $theValue'),
           ],
@@ -144,7 +140,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   void dispose() {
-    realtimeHandler.dispose();
+    realtimeRecordingHandler.dispose();
     super.dispose();
   }
 }

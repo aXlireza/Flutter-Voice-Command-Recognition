@@ -168,4 +168,5 @@ class AudioPlayerState extends State<AudioPlayer> {
   Future<void> pause() => _audioPlayer.pause();
 
   Future<void> stop() => _audioPlayer.stop();
+
 }

@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:path_provider/path_provider.dart';
 // import 'dart:io';
 import 'package:record/record.dart';
-import 'audio_player.dart';
+import 'helper/audio_player.dart';
 // import 'package:record_example/audio_player.dart';
 
 
