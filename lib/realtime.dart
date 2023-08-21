@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audioplayers.dart' as ap;
-import 'helper/audio_player.dart';
 import 'package:flutter/material.dart';
 import 'helper/audio_classification.dart';
 import 'helper/realtime_recorder_handler.dart';
@@ -45,43 +43,50 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
 
-  Future<void> updateDynamicText() async {
-    await realtimeRecordingHandler.recordHandler();
-    final realtimepath = await realtimeRecordingHandler.directoryPath();
+  Future<void> predictRealtime() async {
+    String realtimepath = await realtimeRecordingHandler.directoryPath();
     PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/realtime.wav");
     setState(() {
       theLabel = prediction.theLabel;
       theValue = prediction.theValue;
     });
   }
-
-  void startInterval() {
-    const Duration intervalDelay = Duration(seconds: 1);
-
-    Timer(intervalDelay, () {
-      updateDynamicText();
-      Timer.periodic(intervalDelay, (timer) {
-        updateDynamicText();
-      });
-    });
+  Future<void> updateDynamicText() async {
+    await realtimeRecordingHandler.recordHandler();
+    await predictRealtime();
   }
 
-  void startWhileLoop() async {
-    // while (true) {
-      // await updateDynamicText();
-      final realtimepath = await realtimeRecordingHandler.directoryPath();
-      // AudioPlayer(
-      //   source: "$realtimepath/realtime.wav", onDelete: () {  },
-      // );
-    // }
+  Future<void> startRealtimeRecordInterval({int rounds=-1}) async{
+    if (rounds > -1) {
+      // const Duration intervalDelay = Duration(seconds: 1);
+
+      // Timer(intervalDelay, () {
+      //   updateDynamicText();
+      //   Timer.periodic(intervalDelay, (timer) {
+      //     updateDynamicText();
+      //   });
+      // });
+      for (var i = 0; i < realtimeRecordingHandler.chuplength; i++) {
+        await realtimeRecordingHandler.recordHandler();
+      }
+      await predictRealtime();
+    } else {
+      await updateDynamicText();
+    }
   }
 
   void playRealtimeAudio() async {
-    final realtimepath = await realtimeRecordingHandler.directoryPath();
-    _audioPlayer.play(ap.DeviceFileSource("$realtimepath/realtime.wav"));
-    // AudioPlayer(
-    //   source: "$realtimepath/realtime.wav", onDelete: () {  },
-    // );
+    String realtimepath = await realtimeRecordingHandler.directoryPath();
+    
+    List<FileSystemEntity> files = await realtimeRecordingHandler.realtimeDirContent();
+    // await _audioPlayer.play(ap.DeviceFileSource(files[0].path));
+    for (var file in files) {
+      await _audioPlayer.play(ap.DeviceFileSource(file.path));
+      await Future.delayed(Duration(milliseconds: 1000));
+
+      print(file.path);
+    }
+    // await _audioPlayer.play(ap.DeviceFileSource("$realtimepath/realtime.wav"));
   }
 
   @override
@@ -89,7 +94,6 @@ class _MyHomePageState extends State<MyHomePage> {
     realtimeRecordingHandler.initState();
     voiceCommandRecognition = VoiceCommandRecognition();
     super.initState();
-    // startWhileLoop();
   }
 
   @override
@@ -102,9 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ClipOval(
               child: Material(
                 child: InkWell(
-                  child: SizedBox(width: 56, height: 56, child: Text('record chunk')),
+                  child: SizedBox(width: 200, height: 56, child: Text('record one complete second')),
                   onTap: () async {
-                    await realtimeRecordingHandler.recordHandler();
+                    startRealtimeRecordInterval(rounds: 1);
                   },
                 ),
               ),
@@ -112,7 +116,17 @@ class _MyHomePageState extends State<MyHomePage> {
             ClipOval(
               child: Material(
                 child: InkWell(
-                  child: SizedBox(width: 56, height: 56, child: Text('play realtime')),
+                  child: SizedBox(width: 200, height: 56, child: Text('record chunk')),
+                  onTap: () async {
+                    await updateDynamicText();
+                  },
+                ),
+              ),
+            ),
+            ClipOval(
+              child: Material(
+                child: InkWell(
+                  child: SizedBox(width: 200, height: 56, child: Text('play realtime')),
                   onTap: () {
                     playRealtimeAudio();
                   },
@@ -122,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ClipOval(
               child: Material(
                 child: InkWell(
-                  child: SizedBox(width: 56, height: 56, child: Text('get tmp files')),
+                  child: SizedBox(width: 200, height: 56, child: Text('get tmp files')),
                   onTap: () async {
                     List<FileSystemEntity> files = await realtimeRecordingHandler.realtimeDirContent();
                     print(files);
