@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
 
   Future<void> predictRealtime(String realtimepath) async {
-    await realtimeRecordingHandler.recordChunk();
+    await realtimeRecordingHandler.recordHandler();
 
     String path = (realtimeRecordingHandler.getrecordedRealtimeCount-1).toString();
 
@@ -58,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
       theValue = prediction.theValue;
     });
   }
-
 
   Future<void> startRealtimeRecordInterval({int rounds=-1}) async{
     String realtimepath = await realtimeRecordingHandler.directoryPath();

@@ -63,7 +63,7 @@ class RealtimeRecordingHandler {
     print("recordHandler INIT");
     await recordChunk();
     await chunksController();
-    await generateRealtimeWav();
+    // await generateRealtimeWav();
     print("recordHandler DONE");
   }
 
