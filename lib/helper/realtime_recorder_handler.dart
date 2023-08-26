@@ -1,16 +1,22 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'audio_handler.dart';
+import 'concatenate.dart';
+import 'copy.dart';
+// import 'package:just_audio/just_audio.dart';
+import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 
 class RealtimeRecordingHandler {
   int recordedRealtimeCount = 0;
   AudioHalper audioHalper = AudioHalper();
-  int CHUPLENGTH = 3;
+  int CHUPLENGTH = 1;
 
   get chuplength => CHUPLENGTH;
   get getaudioHalper => audioHalper;
+  get getrecordedRealtimeCount => recordedRealtimeCount;
 
   Future<String> directoryPath({String path=""}) async{
     Directory directory = await getApplicationDocumentsDirectory();
@@ -64,10 +70,14 @@ class RealtimeRecordingHandler {
   Future<void> recordChunk() async {
     Directory realtimeDir = await handleRealtimeDir(path:'tmp');
     int recordlength = 1000~/CHUPLENGTH;
+    print("record $recordedRealtimeCount init");
     await audioHalper.start('${realtimeDir.path}/$recordedRealtimeCount.wav');
     await Future.delayed(Duration(milliseconds: recordlength));
+    print("record $recordedRealtimeCount end");
     await stopRecording();
-    // Timer(Duration(milliseconds: recordlength), stopRecording);
+
+    final DateTime now = DateTime.now();
+    print('Current timestamp: $now');
   }
 
   Future<void> stopRecording() async {
@@ -90,14 +100,18 @@ class RealtimeRecordingHandler {
 
   Future<List<FileSystemEntity>> realtimeDirContent() async {
     Directory realtimeDir = await handleRealtimeDir();
+    
     String realtimeDirpath = realtimeDir.path;
     final checkrealtime = await File("$realtimeDirpath/realtime.wav").exists();
     if (checkrealtime) {
       File therealtimefile = File("$realtimeDirpath/realtime.wav");
-
       int filesize = await therealtimefile.length();
-      print(filesize);
+      print("Realtime file size: $filesize");
     }
+
+    String actualrecordFilePath = recordedRealtimeCount.toString();
+    print("The recordcounter: $actualrecordFilePath");
+
     Directory realtimeDirTmp = await handleRealtimeDir(path: 'tmp');
     List<FileSystemEntity> files = realtimeDirTmp.listSync();
     sortfiles(files);
@@ -121,62 +135,75 @@ class RealtimeRecordingHandler {
     return files;
   }
 
-   Future<void> generateRealtimeWav() async {
-    List<Uint8List> buffers = [];
-
-    List<FileSystemEntity> files = await realtimeDirContent();
-
-    // Load the WAV files as buffers
-    for (FileSystemEntity file in files) {
-      Uint8List buffer = await File(file.path).readAsBytes();
-      buffers.add(buffer);
-    }
-    Uint8List mergedBuffer = Uint8List.fromList(buffers.expand((buffer) => buffer).toList());
-
-    // Write the merged audio to a new WAV file
+  Future<void> generateSampleSingleSecondWav() async {
     Directory realtimeDir = await handleRealtimeDir();
-    String outputPath = "${realtimeDir.path}/realtime.wav";
-    File mergedFile = File(outputPath);
-    await mergedFile.writeAsBytes(mergedBuffer);
+    await audioHalper.start('${realtimeDir.path}/sample.wav');
+    await Future.delayed(Duration(seconds: 1));
+    await stopRecording();
   }
 
-  // Future<void> generateRealtimeWav() async {
-  //   Directory realtimeDir = await handleRealtimeDir();
-  //   List<FileSystemEntity> files = await realtimeDirContent();
-  //   String outputPath = "${realtimeDir.path}/realtime.wav";
-  //   if (files.length >= CHUPLENGTH) {
-  //     List<List<int>> audioDataList = [];
-  //     List<FileSystemEntity> inputFiles = files.sublist(files.length - CHUPLENGTH);
+  Future<void> generateRealtimeWav() async {
+    Directory realtimeDir = await handleRealtimeDir();
+    List<FileSystemEntity> files = await realtimeDirContent();
+    String outputPath = "${realtimeDir.path}/realtime.wav";
+    if (files.length >= CHUPLENGTH) {
+      List<List<int>> audioDataList = [];
+      List<FileSystemEntity> inputFiles = files.sublist(files.length - CHUPLENGTH);
       
-  //     // Read audio data from each input file
-  //     for (FileSystemEntity file in inputFiles) {
-        
-  //       List<int> audioData = File(file.path).readAsBytesSync();
-  //       audioDataList.add(audioData);
-  //     }
+      // Read audio data from each input file
+      for (FileSystemEntity file in inputFiles) {
+        List<int> audioData = File(file.path).readAsBytesSync();
+        audioDataList.add(audioData);
+      }
 
-  //     // Write concatenated audio data to output file
-  //     File outputFile = File(outputPath);
-  //     var output = outputFile.openWrite(mode: FileMode.write);
+      // Write concatenated audio data to output file
+      File outputFile = File(outputPath);
+      var output = outputFile.openWrite(mode: FileMode.write);
 
-  //     // Write the header from the first file
-  //     output.add(audioDataList.first.sublist(0, 44));
+      // Write the header from the first file
+      output.add(audioDataList.first.sublist(0, 44));
 
-  //     // Write the audio data from each file (excluding header)
-  //     for (var audioData in audioDataList) {
-  //       output.add(audioData.sublist(44)); // Exclude header
-  //     }
+      // Write the audio data from each file (excluding header)
+      for (var audioData in audioDataList) {
+        output.add(audioData.sublist(44)); // Exclude header
+      }
 
-  //     output.close();
-  //     print('realtime audio generated');
-  //   } else {
-  //     generateEmptyWavFile(outputPath);
-  //   }
-  // }
+      output.close();
+
+      await copyWavHeader();
+      print('realtime audio generated');
+    } else {
+      generateEmptyWavFile(outputPath);
+    }
+
+    await copyRealtimeFile(count: (recordedRealtimeCount-1).toString());
+    await copySampleFile();
+  }
+
+  Future<void> copyWavHeader() async {
+    Directory realtimeDir = await handleRealtimeDir();
+
+    // Open the source file for reading in binary mode
+    final sourceFile = File('${realtimeDir.path}/sample.wav');
+    final sourceBytes = sourceFile.readAsBytesSync();
+
+    // Read header information (first 44 bytes)
+    final headerBytes = sourceBytes.sublist(0, 44);
+
+    // Open the destination file for writing in binary mode
+    final destinationFile = File('${realtimeDir.path}/realtime.wav');
+    final destinationSink = destinationFile.openWrite();
+
+    // Write the copied header to the destination file
+    destinationSink.add(headerBytes);
+
+    // Close the destination file
+    destinationSink.close();
+  }
 
   void generateEmptyWavFile(String outputPath) {
     // WAV header information
-    int sampleRate = 44100; // Samples per second (44.1 kHz)
+    int sampleRate = 16000;
     int numChannels = 1;    // Mono
     int bitsPerSample = 16; // 16-bit audio
 
@@ -229,6 +256,7 @@ class RealtimeRecordingHandler {
   Future<void> initState() async {
     await setupRealtimeDir();
     await emptyRealtimeDir();
+    // await generateSampleSingleSecondWav();
     audioHalper.initState();
   }
   

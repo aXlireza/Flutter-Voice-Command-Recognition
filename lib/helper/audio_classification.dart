@@ -66,22 +66,59 @@ class VoiceCommandRecognition {
     _labels = labelsRaw.split('\n');
   }
 
-  Future<PredictionResults> analyseAudio(String audioPath) async {
+  Future<PredictionResults> analyseAudioBytes(Uint8List audiobytes) async {
 
-    PredictionResults output = await _runInference(audioPath);
+    PredictionResults output = await _runInferenceBytes(audiobytes);
 
     log('Processing outputs...');
 
     return output;
   }
 
-  Future<PredictionResults> _runInference(
-    String path,
+  Future<PredictionResults> analyseAudio(String audiopath) async {
+
+    PredictionResults output = await _runInference(audiopath);
+
+    log('Processing outputs...');
+
+    return output;
+  }
+
+  Future<PredictionResults> _runInferenceBytes(
+    Uint8List audiobytes,
   ) async {
     log('Running inference...');
     late Tensor inputTensor;
     late Tensor outputTensor;
-    List<List<List<double>>> input = await getSpectrogram(path);
+    List<List<List<double>>> input = await getSpectrogramByBytes(audiobytes);
+    final output = [List<double>.filled(26, 0)];
+
+    inputTensor = _interpreter!.getInputTensors().first;
+    outputTensor = _interpreter!.getOutputTensors().first;
+
+    _interpreter!.run([input], output);
+
+    MapEntry<int, double> entryWithLargestNumber = output[0].asMap().entries.reduce((prev, curr) {
+      return curr.value > prev.value ? curr : prev;
+    });
+    
+    int largestNumberIndex = entryWithLargestNumber.key;
+    double largestNumber = entryWithLargestNumber.value;
+
+    print(_labels![largestNumberIndex]);
+    return PredictionResults(
+      _labels![largestNumberIndex],
+      output[0][largestNumberIndex]
+    );
+  }
+
+  Future<PredictionResults> _runInference(
+    String audiopath,
+  ) async {
+    log('Running inference...');
+    late Tensor inputTensor;
+    late Tensor outputTensor;
+    List<List<List<double>>> input = await getSpectrogram(audiopath);
     final output = [List<double>.filled(26, 0)];
 
     inputTensor = _interpreter!.getInputTensors().first;

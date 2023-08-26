@@ -170,7 +170,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
     if (path != null) {
       // var spectrogramArray = await getSpectrogram(path);
-      voiceCommandRecognition!.analyseAudio(path);
+      // voiceCommandRecognition!.analyseAudio(path);
       // var spectrogramTensor = tfl.Tensor.fillShape(o, dim, shape)
       // interpreter.run(spectrogramArray, outputTensor);
       print(outputTensor);

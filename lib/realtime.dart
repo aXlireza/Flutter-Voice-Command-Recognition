@@ -1,9 +1,11 @@
 import 'dart:core';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:flutter/material.dart';
 import 'helper/audio_classification.dart';
+import 'helper/copy.dart';
 import 'helper/realtime_recorder_handler.dart';
 
 void main() {
@@ -43,35 +45,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
 
-  Future<void> predictRealtime() async {
-    String realtimepath = await realtimeRecordingHandler.directoryPath();
-    PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/realtime.wav");
+  Future<void> predictRealtime(String realtimepath) async {
+    await realtimeRecordingHandler.recordChunk();
+
+    String path = (realtimeRecordingHandler.getrecordedRealtimeCount-1).toString();
+
+    PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/tmp/$path.wav");
+    // PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/realtime.wav");
+    // PredictionResults prediction = await voiceCommandRecognition!.analyseAudioBytes(realtimebytes);
     setState(() {
       theLabel = prediction.theLabel;
       theValue = prediction.theValue;
     });
   }
-  Future<void> updateDynamicText() async {
-    await realtimeRecordingHandler.recordHandler();
-    await predictRealtime();
-  }
+
 
   Future<void> startRealtimeRecordInterval({int rounds=-1}) async{
+    String realtimepath = await realtimeRecordingHandler.directoryPath();
+    
     if (rounds > -1) {
-      // const Duration intervalDelay = Duration(seconds: 1);
-
-      // Timer(intervalDelay, () {
-      //   updateDynamicText();
-      //   Timer.periodic(intervalDelay, (timer) {
-      //     updateDynamicText();
-      //   });
-      // });
-      for (var i = 0; i < realtimeRecordingHandler.chuplength; i++) {
-        await realtimeRecordingHandler.recordHandler();
+      for (var i = 0; i < rounds; i++) {
+        await predictRealtime(realtimepath);
       }
-      await predictRealtime();
     } else {
-      await updateDynamicText();
+      await predictRealtime(realtimepath);
     }
   }
 
@@ -103,28 +100,55 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipOval(
-              child: Material(
+              Material(
                 child: InkWell(
                   child: SizedBox(width: 200, height: 56, child: Text('record one complete second')),
                   onTap: () async {
-                    startRealtimeRecordInterval(rounds: 1);
+                    await startRealtimeRecordInterval(rounds: 10);
                   },
                 ),
               ),
-            ),
-            ClipOval(
-              child: Material(
+              Material(
                 child: InkWell(
                   child: SizedBox(width: 200, height: 56, child: Text('record chunk')),
                   onTap: () async {
-                    await updateDynamicText();
+                    await realtimeRecordingHandler.recordChunk();
                   },
                 ),
               ),
-            ),
-            ClipOval(
-              child: Material(
+              Material(
+                child: InkWell(
+                  child: SizedBox(width: 200, height: 56, child: Text('chunks Controller')),
+                  onTap: () async {
+                    await realtimeRecordingHandler.chunksController();
+                  },
+                ),
+              ),
+              // Material(
+              //   child: InkWell(
+              //     child: SizedBox(width: 200, height: 56, child: Text('generate realtime')),
+              //     onTap: () async {
+              //       await realtimeRecordingHandler.generateRealtimeWav();
+              //     },
+              //   ),
+              // ),
+              Material(
+                child: InkWell(
+                  child: SizedBox(width: 200, height: 56, child: Text('copy tmp files')),
+                  onTap: () async {
+                    await copytmpFiles();
+                  },
+                ),
+              ),
+              Material(
+                child: InkWell(
+                  child: SizedBox(width: 200, height: 56, child: Text('Predict')),
+                  onTap: () async {
+                    await startRealtimeRecordInterval(rounds: -1);
+                  },
+                ),
+              ),
+              Material(
                 child: InkWell(
                   child: SizedBox(width: 200, height: 56, child: Text('play realtime')),
                   onTap: () {
@@ -132,9 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-            ),
-            ClipOval(
-              child: Material(
+              Material(
                 child: InkWell(
                   child: SizedBox(width: 200, height: 56, child: Text('get tmp files')),
                   onTap: () async {
@@ -143,7 +165,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
-            ),
             Text('label: $theLabel'),
             Text('confidence: $theValue'),
           ],

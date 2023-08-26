@@ -85,6 +85,42 @@ Future<List<List<List<double>>>> getSpectrogram(String path) async {
   return spectrogramArray;
 }
 
+Future<List<List<List<double>>>> getSpectrogramByBytes(Uint8List audiobytes) async {
+  List<List<double>> spectrogramArrayTmp = [];
+  List<List<List<double>>> spectrogramArray = [];
+  final wav = Wav.read(audiobytes);
+  final audio = normalizeRmsVolume(wav.toMono(), 0.3);
+  const chunkSize = 2048;
+  const buckets = 120;
+  final stft = STFT(chunkSize, Window.hanning(chunkSize));
+  Uint64List? logItr;
+  stft.run(
+    audio,
+    (Float64x2List chunk) {
+      final amp = chunk.discardConjugates().magnitudes();
+      logItr ??= linSpace(amp.length, buckets);
+      int i0 = 0;
+      spectrogramArrayTmp = [];
+      for (final i1 in logItr!) {
+        double power = 0;
+        if (i1 != i0) {
+          for (int i = i0; i < i1; ++i) {
+            power += amp[i];
+          }
+          power /= i1 - i0;
+        }
+        // stdout.write(gradient(power));
+        spectrogramArrayTmp.add([power]);
+        i0 = i1;
+      }
+      spectrogramArray.add(spectrogramArrayTmp);
+      // stdout.write('\n');
+    },
+    chunkSize ~/ 2,
+  );
+  return spectrogramArray;
+}
+
 void main(List<String> argv) async {
   if (argv.length != 1) {
     print('Wrong number of args. Usage:');
