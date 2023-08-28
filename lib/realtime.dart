@@ -40,21 +40,48 @@ class _MyHomePageState extends State<MyHomePage> {
   String theLabel = '';
   double theValue = 0.0;
 
+  String yamnetTheLabel = '';
+  double yamnetTheValue = 0.0;
+
   VoiceCommandRecognition? voiceCommandRecognition;
   RealtimeRecordingHandler realtimeRecordingHandler = RealtimeRecordingHandler();
 
   final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
+
+  bool isMusicPlaying() {
+    return false;
+  }
 
   Future<void> predictRealtime(String realtimepath) async {
     await realtimeRecordingHandler.recordHandler();
 
     String path = (realtimeRecordingHandler.getrecordedRealtimeCount-1).toString();
 
+    PredictionResults yamnetPrediction = await voiceCommandRecognition!.yamnetAudio("$realtimepath/tmp/$path.wav");
     PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/tmp/$path.wav");
+
+    // verify the high confidance in prediction
+    if (prediction.theValue == 1.0) {
+      if (actionable == true && prediction.theLabel != 'ava') {
+        actionable = false;
+        if (wasItPlaying == true) {
+          print("RUN COMMAND");
+          print("DEACTIVATED");
+        }
+      } else if (actionable == false && prediction.theLabel == 'ava') {
+        print("ACTIVATED");
+        wasItPlaying = isMusicPlaying();
+        if (wasItPlaying == true) {
+          actionable = true;
+        }
+      }
+    }
 
     setState(() {
       theLabel = prediction.theLabel;
       theValue = prediction.theValue;
+      yamnetTheLabel = yamnetPrediction.theLabel;
+      yamnetTheValue = yamnetPrediction.theValue;
     });
   }
 
@@ -165,6 +192,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             Text('label: $theLabel'),
             Text('confidence: $theValue'),
+            Text('label: $yamnetTheLabel'),
+            Text('confidence: $yamnetTheValue'),
           ],
         ),
       ),

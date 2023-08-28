@@ -36,10 +36,5 @@ flutter:
   assets:
     - assets/model.tflite
     - assets/labels.txt
-    - assets/0.wav
-    - assets/google_teach_machine_label.txt
-    - assets/google_teach_machine_model.tflite
-    - assets/sample_audio_44k_mono.wav
-    - assets/ssd_mobilenet_v1_1_metadata_1.tflite
-    - assets/tfl_logo.png
-    - assets/mobilenet.txt
+    - assets/yamnet.tflite
+    - assets/yamnet.txt
