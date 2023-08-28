@@ -51,8 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     String path = (realtimeRecordingHandler.getrecordedRealtimeCount-1).toString();
 
     PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/tmp/$path.wav");
-    // PredictionResults prediction = await voiceCommandRecognition!.analyseAudio("$realtimepath/realtime.wav");
-    // PredictionResults prediction = await voiceCommandRecognition!.analyseAudioBytes(realtimebytes);
+
     setState(() {
       theLabel = prediction.theLabel;
       theValue = prediction.theValue;

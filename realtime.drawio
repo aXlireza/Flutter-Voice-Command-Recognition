@@ -1,0 +1,489 @@
+<mxfile host="65bd71144e">
+    <diagram id="LwlPHAfStnGn37u7OHuz" name="Page-1">
+        <mxGraphModel dx="1878" dy="1244" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="32" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="111" target="118" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1230" y="465" as="sourcePoint"/>
+                        <mxPoint x="1320.0000000000002" y="390" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="load labels" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="-730" y="190" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="3" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="load model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="-560" y="185" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="6" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="load yamnet model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="185" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="212" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="8" target="211" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;chunk &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1024&lt;/span&gt;&lt;/div&gt;&lt;div&gt;format &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;pyaudio&lt;/span&gt;.paInt16&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;channels &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;rate &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;16000&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;recorded_file_count &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;0&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;init audio recorder&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="-180" y="130" width="290" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="118" target="35" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1530" y="492.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="123" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;yamnet_class&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="36" vertex="1" connectable="0">
+                    <mxGeometry x="-0.3722" relative="1" as="geometry">
+                        <mxPoint x="13" y="-10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="35" target="136" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2010" y="445" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="== &quot;Speech&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="38" vertex="1" connectable="0">
+                    <mxGeometry x="-0.3935" relative="1" as="geometry">
+                        <mxPoint x="6" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="35" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1230" y="630" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1270" y="330"/>
+                            <mxPoint x="960" y="330"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="41" value="false" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="40" vertex="1" connectable="0">
+                    <mxGeometry x="-0.9403" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="35" value="&lt;span style=&quot;&quot;&gt;yamnet_class&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1220" y="175" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="136" target="61" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2200" y="645" as="sourcePoint"/>
+                        <mxPoint x="2440" y="200" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="137" value="&lt;span style=&quot;font-size: 12px;&quot;&gt;theLabel, theValue&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="56" vertex="1" connectable="0">
+                    <mxGeometry x="-0.536" y="-4" relative="1" as="geometry">
+                        <mxPoint x="34" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="64" value="" style="edgeStyle=none;html=1;exitX=0.97;exitY=0.499;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="61" target="93" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1910" y="215" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="65" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;CONFIDENCE_RATE&lt;/span&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="64" vertex="1" connectable="0">
+                    <mxGeometry x="-0.5077" y="3" relative="1" as="geometry">
+                        <mxPoint x="51" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="66" style="edgeStyle=orthogonalEdgeStyle;html=1;exitX=0.5;exitY=0.042;exitDx=0;exitDy=0;exitPerimeter=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="61" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1048" y="140" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1630" y="110"/>
+                            <mxPoint x="950" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="67" value="else" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="66" vertex="1" connectable="0">
+                    <mxGeometry x="-0.9499" y="-1" relative="1" as="geometry">
+                        <mxPoint x="-1" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="theValue" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1590" y="175" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;cooldown&lt;/span&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=130;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2090" y="-597.5" width="280" height="165" as="geometry"/>
+                </mxCell>
+                <mxCell id="154" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="70" target="174" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2570" y="-507.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="70" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;font&gt;current_time - last_detection_time&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2110" y="-537.5" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="77" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="72" target="76" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="78" value="== True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="77" vertex="1" connectable="0">
+                    <mxGeometry x="-0.264" y="-1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="84" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="72" target="89" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2500" y="335" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="2380" y="358"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="85" value="== False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="84" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0997" relative="1" as="geometry">
+                        <mxPoint y="-20" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="72" value="actionable" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2340" y="175" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="76" target="194" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2690" y="215" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="86" value="!= activationKey" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="83" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1177" y="2" relative="1" as="geometry">
+                        <mxPoint x="1" y="-6" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="76" value="theLabel" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2480" y="175" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="89" target="157" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2690" y="358" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="== activationKey" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="91" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2767" relative="1" as="geometry">
+                        <mxPoint x="6" y="-8" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="89" value="theLabel" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2480" y="317.5" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=#FFFFFF;" parent="1" source="93" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1985" y="100"/>
+                            <mxPoint x="930" y="100"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="149" value="else" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="148" vertex="1" connectable="0">
+                    <mxGeometry x="-0.9607" y="-1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="151" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;" parent="1" source="93" target="72" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2320" y="215" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="152" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;&amp;gt;&lt;/span&gt; cooldown_duration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="151" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2633" y="2" relative="1" as="geometry">
+                        <mxPoint x="19" y="-10" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="93" value="&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; text-align: left;&quot;&gt;cooldown&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;(current_time)&lt;/span&gt;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; text-align: left;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1870" y="150" width="230" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;recordHandler&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=128;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="792.5" y="-610" width="365" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="214" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="101" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="101" value="prepare empty folder for realtime audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="185" width="285" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="103" target="105" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="record(length = by&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH)&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="865" y="-565" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="104" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="105" target="107" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="105" value="increment&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;recorded_file_count&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="847.5" y="-467.5" width="255" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="106" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="107" target="109" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="107" value="store the new record in the realtime_dir" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="850" y="-367.5" width="250" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="108" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="109" target="110" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="109" value="remove the overflowed files from top of the recorded list of chunks based on the&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="852.5" y="-257.5" width="245" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="110" value="rewrite the realtime.wav file by the left audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="822.5" y="-130" width="305" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="111" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;recordHandler&lt;/span&gt;&lt;/div&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="185" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="112" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;isitspeech&lt;/span&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=28;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1260" y="-470" width="260" height="240" as="geometry"/>
+                </mxCell>
+                <mxCell id="113" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="114" target="116" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="read realtime.wav" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1295" y="-425" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="115" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="116" target="177" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1390" y="-180" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="116" value="predict by the check model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="-327.5" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="118" value="&lt;span style=&quot;text-align: left;&quot;&gt;isitspeech&lt;/span&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+                    <mxGeometry x="1042.5" y="185" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" value="predict function" style="shape=umlFrame;whiteSpace=wrap;html=1;width=160;height=30;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1640" y="-620" width="260" height="520" as="geometry"/>
+                </mxCell>
+                <mxCell id="125" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="126" target="128" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="126" value="read the realtime.wav file" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1680" y="-560" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="127" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="128" target="130" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="128" value="spectrogram" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1710" y="-465" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="130" target="132" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="130" value="predict" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1710" y="-367.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="132" target="144" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1770" y="-185" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="132" value="sort" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1710" y="-277.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="144" target="176" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2000" y="-160" as="targetPoint"/>
+                        <mxPoint x="1830" y="-155" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1770" y="-70"/>
+                            <mxPoint x="1770" y="-70"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="136" value="predict" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="1400" y="185" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="175" target="70" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1960" y="-507.5" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="144" value="indices" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="1710" y="-190" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="179" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="157" target="178" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="157" value="&quot;ACTIVATED&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.display;whiteSpace=wrap;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2690" y="327.5" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;is_music_playing&lt;/span&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=160;height=33;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2740" y="-612.5" width="280" height="322.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="165" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="162" target="164" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;font&gt;device player ctrl status&lt;/font&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2760" y="-545" width="240" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="167" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="164" target="170" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3070" y="-375" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="2950" y="-375"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="168" value="== &quot;Playing&quot;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="167" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1738" y="-1" relative="1" as="geometry">
+                        <mxPoint x="1" y="-49" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="172" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="164" target="171" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="2800" y="-375"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="173" value="else" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="172" vertex="1" connectable="0">
+                    <mxGeometry x="-0.6541" y="-2" relative="1" as="geometry">
+                        <mxPoint x="19" y="-13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="164" value="playing" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2840" y="-415" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="170" value="True" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2905" y="-250" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" value="False" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2755" y="-250" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;last_detection_time&lt;/span&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2100" y="-365" width="260" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;current_time&lt;/span&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2140" y="-717.5" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="176" value="&lt;span style=&quot;&quot;&gt;theLabel, theValue&lt;/span&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1720" y="-50" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="177" value="&lt;span style=&quot;&quot;&gt;yamnet_label&lt;/span&gt;" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="-190" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="181" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=#FFFFFF;" parent="1" source="178" target="186" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3060" y="357.5" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="182" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;wasitplaying&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="181" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2549" y="-1" relative="1" as="geometry">
+                        <mxPoint x="15" y="-14" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="178" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;is_music_playing&lt;/span&gt;&lt;/div&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="2880" y="327.5" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="193" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="184" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="3615" y="470"/>
+                            <mxPoint x="900" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="184" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;actionable &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;True&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3520" y="327.5" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="190" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="186" target="189" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="191" value="== True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="190" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2901" y="-2" relative="1" as="geometry">
+                        <mxPoint y="-11" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="186" value="&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;wasitplaying&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3070" y="317.5" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="72" target="89" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="2480" y="358" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="2380" y="358"/>
+                        </Array>
+                        <mxPoint x="2380" y="255" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="188" value="== False" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="187" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0997" relative="1" as="geometry">
+                        <mxPoint y="-20" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="192" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="189" target="184" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="189" value="player ctrl pause" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3330" y="327.5" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="196" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="194" target="195" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="194" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;actionable &lt;span style=&quot;&quot;&gt;=&lt;/span&gt;&amp;nbsp;&lt;span style=&quot;&quot;&gt;False&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="2700" y="185" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="198" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="195" target="197" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="195" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;last_detection_time &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; current_time&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3005" y="185" width="315" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="200" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="197" target="199" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="201" value="== True" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="200" vertex="1" connectable="0">
+                    <mxGeometry x="-0.2152" y="-1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="197" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;wasitplaying&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3390" y="175" width="157.5" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="203" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="199" target="204" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3866.25" y="215" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="206" value="theLabel" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="203" vertex="1" connectable="0">
+                    <mxGeometry x="0.1268" y="-1" relative="1" as="geometry">
+                        <mxPoint y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="199" value="player ctrl play" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3646.25" y="185" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="208" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="204" target="207" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="204" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;process_command&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="3880" y="185" width="60" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="205" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;process_command&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=160;height=33;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="3180" y="-616.25" width="280" height="362.5" as="geometry"/>
+                </mxCell>
+                <mxCell id="210" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="207" target="111" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="4070" y="70"/>
+                            <mxPoint x="909" y="70"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="207" value="&quot;DEACTIVATED&quot;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.display;whiteSpace=wrap;labelBackgroundColor=#FFFFFF;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="4010" y="185" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="213" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="211" target="101" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="211" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;wasItPlaying &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;None&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;actionable &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;False&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CHUPLENGTH&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;6&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CONFIDENCE_RATE&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="150" width="240" height="130" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
