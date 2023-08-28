@@ -119,7 +119,7 @@ class VoiceCommandRecognition {
     late Tensor inputTensor;
     late Tensor outputTensor;
     List<List<List<double>>> input = await getSpectrogram(audiopath);
-    final output = [List<double>.filled(26, 0)];
+    final output = [List<double>.filled(8, 0)];
 
     inputTensor = _interpreter!.getInputTensors().first;
     outputTensor = _interpreter!.getOutputTensors().first;

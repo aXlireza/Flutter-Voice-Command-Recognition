@@ -83,13 +83,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _callNumber() async{
-    const number = '+989044558736'; //set the number here
+    const number = '+989939443754'; //set the number here
     bool? res = await FlutterPhoneDirectCaller.callNumber(number);
   }
 
 
 
-  List<String> recipents = ["+989044558736"];
+  List<String> recipents = ["+989939443754"];
 
 
   //********************************
