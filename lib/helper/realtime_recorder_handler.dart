@@ -1,20 +1,16 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'audio_handler.dart';
-import 'concatenate.dart';
 import 'copy.dart';
-// import 'package:just_audio/just_audio.dart';
-import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 
 class RealtimeRecordingHandler {
   int recordedRealtimeCount = 0;
   AudioHalper audioHalper = AudioHalper();
-  int CHUPLENGTH = 1;
+  int chupLength = 1;
 
-  get chuplength => CHUPLENGTH;
+  get chuplength => chupLength;
   get getaudioHalper => audioHalper;
   get getrecordedRealtimeCount => recordedRealtimeCount;
 
@@ -69,7 +65,7 @@ class RealtimeRecordingHandler {
 
   Future<void> recordChunk() async {
     Directory realtimeDir = await handleRealtimeDir(path:'tmp');
-    int recordlength = 1000~/CHUPLENGTH;
+    int recordlength = 1000~/chupLength;
     print("record $recordedRealtimeCount init");
     await audioHalper.start('${realtimeDir.path}/$recordedRealtimeCount.wav');
     await Future.delayed(Duration(milliseconds: recordlength));
@@ -90,8 +86,8 @@ class RealtimeRecordingHandler {
     Directory realtimeDir = await handleRealtimeDir(path:'tmp');
     List<FileSystemEntity> files = realtimeDir.listSync();
     sortfiles(files);
-    if (files.length >= CHUPLENGTH) {
-      int overflowCount = files.length-CHUPLENGTH;
+    if (files.length >= chupLength) {
+      int overflowCount = files.length-chupLength;
       for (var i = 0; i < overflowCount; i++) {
         await files[i].delete();
       }
@@ -138,7 +134,7 @@ class RealtimeRecordingHandler {
   Future<void> generateSampleSingleSecondWav() async {
     Directory realtimeDir = await handleRealtimeDir();
     await audioHalper.start('${realtimeDir.path}/sample.wav');
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     await stopRecording();
   }
 
@@ -146,9 +142,9 @@ class RealtimeRecordingHandler {
     Directory realtimeDir = await handleRealtimeDir();
     List<FileSystemEntity> files = await realtimeDirContent();
     String outputPath = "${realtimeDir.path}/realtime.wav";
-    if (files.length >= CHUPLENGTH) {
+    if (files.length >= chupLength) {
       List<List<int>> audioDataList = [];
-      List<FileSystemEntity> inputFiles = files.sublist(files.length - CHUPLENGTH);
+      List<FileSystemEntity> inputFiles = files.sublist(files.length - chupLength);
       
       // Read audio data from each input file
       for (FileSystemEntity file in inputFiles) {
