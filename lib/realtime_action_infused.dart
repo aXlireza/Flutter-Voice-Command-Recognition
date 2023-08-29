@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:voice_command/spectrogram.dart';
 import 'helper/audio_classification.dart';
 import 'helper/copy.dart';
@@ -56,6 +57,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return false;
   }
 
+  _callNumber() async{
+    const number = '+989939443754'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+  }
+
+  void processCommand(String theLabel) {
+    switch(theLabel) {
+      case 'call' || 'tamas': _callNumber(); break;
+      // case 'enable' || 'faal': enable(); break;
+      // case 'disable' || 'qeir_faal': disable(); break;
+    }
+  }
+
   Future<void> predictRealtime(String realtimepath) async {
     await realtimeRecordingHandler.recordHandler();
 
@@ -76,19 +90,20 @@ class _MyHomePageState extends State<MyHomePage> {
         validTheLabel = prediction.theLabel;
         validTheValue = prediction.theValue;
       });
-      if (actionable == true && prediction.theLabel != 'ava') {
-        actionable = false;
-        if (wasItPlaying == true) {
-          print("RUN COMMAND");
-          print("DEACTIVATED");
-        }
-      } else if (actionable == false && prediction.theLabel == 'ava') {
-        print("ACTIVATED");
-        wasItPlaying = isMusicPlaying();
-        if (wasItPlaying == true) {
-          actionable = true;
-        }
-      }
+      processCommand(prediction.theLabel);
+      // if (actionable == true && prediction.theLabel != 'ava') {
+      //   actionable = false;
+      //   if (wasItPlaying == true) {
+      //     processCommand(prediction.theLabel);
+      //     print("DEACTIVATED");
+      //   }
+      // } else if (actionable == false && prediction.theLabel == 'ava') {
+      //   print("ACTIVATED");
+      //   wasItPlaying = isMusicPlaying();
+      //   if (wasItPlaying == true) {
+      //     actionable = true;
+      //   }
+      // }
     }
 
     setState(() {
