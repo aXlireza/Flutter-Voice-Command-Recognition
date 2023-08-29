@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="LwlPHAfStnGn37u7OHuz" name="Page-1">
-        <mxGraphModel dx="3987" dy="2057" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+        <mxGraphModel dx="1731" dy="1145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -13,25 +13,25 @@
                 <mxCell id="4" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="2" target="3" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="load labels" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="2" value="load labels" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="-730" y="190" width="120" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="3" target="6" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="load model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="3" value="load model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="-560" y="185" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="9" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="6" target="8" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="load yamnet model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="6" value="load yamnet model" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="-390" y="185" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="212" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="8" target="211" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="8" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;chunk &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1024&lt;/span&gt;&lt;/div&gt;&lt;div&gt;format &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;pyaudio&lt;/span&gt;.paInt16&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;channels &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;rate &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;16000&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;recorded_file_count &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;0&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;init audio recorder&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="8" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;chunk &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1024&lt;/span&gt;&lt;/div&gt;&lt;div&gt;format &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;pyaudio&lt;/span&gt;.paInt16&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;channels &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;rate &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;16000&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div&gt;recorded_file_count &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;0&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;init audio recorder&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="-180" y="130" width="280" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="218" target="35" edge="1">
@@ -202,34 +202,34 @@
                 <mxCell id="214" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="101" target="111" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="101" value="prepare empty folder for realtime audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="101" value="prepare empty folder for realtime audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="520" y="185" width="285" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="102" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="103" target="105" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="103" value="record(length = by&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH)&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="103" value="record(length = by&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH)&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1252.5" y="-552.5" width="220" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="104" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="105" target="107" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="105" value="increment&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;recorded_file_count&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="105" value="increment&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;recorded_file_count&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1235" y="-455" width="255" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="106" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="107" target="109" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="107" value="store the new record in the realtime_dir" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="107" value="store the new record in the realtime_dir" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1237.5" y="-355" width="250" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="108" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="109" target="110" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="109" value="remove the overflowed files from top of the recorded list of chunks based on the&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="109" value="remove the overflowed files from top of the recorded list of chunks based on the&amp;nbsp;&lt;span style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px;&quot;&gt;CHUPLENGTH&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="-245" width="245" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="110" value="rewrite the realtime.wav file by the left audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="110" value="rewrite the realtime.wav file by the left audio chunks" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
                     <mxGeometry x="1210" y="-117.5" width="305" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="111" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;span style=&quot;text-align: left;&quot;&gt;recordHandler&lt;/span&gt;&lt;/div&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
@@ -247,10 +247,10 @@
                 <mxCell id="127" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="128" target="130" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="128" value="spectrogram" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="128" value="spectrogram" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1730" y="-428.75" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="130" value="predict" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="130" value="predict" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="1730" y="-331.25" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="131" value="" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="130" target="144" edge="1">
@@ -277,8 +277,8 @@
                         <mxPoint x="1900" y="-383.75" as="sourcePoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="144" value="fetch highest prediction" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
-                    <mxGeometry x="1730" y="-233.75" width="120" height="60" as="geometry"/>
+                <mxCell id="144" value="fetch highest prediction" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+                    <mxGeometry x="1715" y="-231.25" width="150" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="179" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="157" target="178" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
@@ -436,7 +436,7 @@
                     <mxGeometry x="4010" y="185" width="60" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="205" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;process_command&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=160;height=33;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
-                    <mxGeometry x="2825" y="-593.75" width="280" height="362.5" as="geometry"/>
+                    <mxGeometry x="2825" y="-593.75" width="485" height="263.75" as="geometry"/>
                 </mxCell>
                 <mxCell id="210" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="207" target="111" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -452,7 +452,7 @@
                 <mxCell id="213" style="edgeStyle=none;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" source="211" target="101" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="211" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;wasItPlaying &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;None&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;actionable &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;False&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CHUPLENGTH&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;6&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CONFIDENCE_RATE&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;fontColor=#000000;labelBackgroundColor=#FFFFFF;" parent="1" vertex="1">
+                <mxCell id="211" value="&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;wasItPlaying &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;None&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;&quot;&gt;actionable &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;False&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CHUPLENGTH&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;6&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;&quot;&gt;CONFIDENCE_RATE&lt;/span&gt; &lt;span style=&quot;&quot;&gt;=&lt;/span&gt; &lt;span style=&quot;&quot;&gt;1&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;align=left;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
                     <mxGeometry x="200" y="150" width="240" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="216" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;fontColor=#000000;labelBackgroundColor=#FFFFFF;endArrow=none;" edge="1" parent="1" source="111" target="215">
@@ -475,6 +475,123 @@
                 </mxCell>
                 <mxCell id="219" value="toAudio" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
                     <mxGeometry x="1110" y="185" width="65" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="224" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="221" target="240">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3047.5" y="-505.09428571428566" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="225" value="== 'call' || 'tamas'" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="224">
+                    <mxGeometry x="-0.3789" relative="1" as="geometry">
+                        <mxPoint x="14" y="-15" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="227" style="edgeStyle=none;html=1;" edge="1" parent="1" source="221" target="241">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3047.5" y="-459.38" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="230" value="== 'enable' || 'faal'" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="227">
+                    <mxGeometry x="-0.1218" relative="1" as="geometry">
+                        <mxPoint x="6" y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="229" style="edgeStyle=none;html=1;" edge="1" parent="1" source="221" target="242">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3047.5" y="-416.9990476190477" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="231" value="== 'disable' || 'qeir_faal'" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="229">
+                    <mxGeometry x="-0.1011" relative="1" as="geometry">
+                        <mxPoint y="13" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="221" value="label" style="rhombus;whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="2847.5" y="-499.38" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="233" style="edgeStyle=none;html=1;" edge="1" parent="1" source="240" target="232">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3134.833333333333" y="-504.38" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="234" style="edgeStyle=none;html=1;" edge="1" parent="1" source="241" target="232">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3147.5" y="-460.71928571428566" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="236" style="edgeStyle=none;html=1;" edge="1" parent="1" source="242" target="232">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="3131.394736842105" y="-418.13" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="232" value="break" style="whiteSpace=wrap;html=1;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="3187.5" y="-478.13" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="239" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="238" target="221">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="2780" y="-459"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="238" value="theLabel" style="whiteSpace=wrap;html=1;fontColor=#000000;rounded=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="2825" y="-660" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="240" value="&lt;span style=&quot;&quot;&gt;action.call()&lt;/span&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="3060" y="-552.5" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="241" value="&lt;span style=&quot;&quot;&gt;action.enable()&lt;/span&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="3060" y="-476.87" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="242" value="&lt;span style=&quot;&quot;&gt;action.disable()&lt;/span&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.flowchart.on-page_reference;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="3060" y="-413.75" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="244" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="243" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="243" value="load yamnetLabels" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;labelBackgroundColor=#FFFFFF;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+                    <mxGeometry x="-920" y="190" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="245" value="&lt;div style=&quot;font-family: &amp;quot;Droid Sans Mono&amp;quot;, &amp;quot;monospace&amp;quot;, monospace; font-size: 14px; line-height: 19px;&quot;&gt;&lt;div style=&quot;line-height: 19px;&quot;&gt;&lt;span style=&quot;&quot;&gt;Action&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;width=160;height=33;boundedLbl=1;verticalAlign=middle;align=left;spacingLeft=5;fontFamily=Helvetica;fontColor=#000000;labelBackgroundColor=#FFFFFF;" vertex="1" parent="1">
+                    <mxGeometry x="3480" y="-593.75" width="485" height="263.75" as="geometry"/>
+                </mxCell>
+                <mxCell id="251" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="246" target="250">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="3638" y="-670"/>
+                            <mxPoint x="3400" y="-670"/>
+                            <mxPoint x="3400" y="-460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="246" value="call" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+                    <mxGeometry x="3597.5" y="-650" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="252" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="248" target="250">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="3580" y="-660"/>
+                            <mxPoint x="3420" y="-660"/>
+                            <mxPoint x="3420" y="-460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="248" value="enable" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+                    <mxGeometry x="3540" y="-650" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="253" style="edgeStyle=orthogonalEdgeStyle;html=1;" edge="1" parent="1" source="249" target="250">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="3440" y="-640"/>
+                            <mxPoint x="3440" y="-460"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="249" value="disable" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+                    <mxGeometry x="3480" y="-650" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="250" value="Action" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="3520" y="-479.88" width="110" height="41" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
