@@ -22,6 +22,10 @@ class Realtime {
   }
 
   Future<void> predictRealtime(String realtimepath) async {
+
+    if (realtimepath.isEmpty) {
+      realtimepath = await realtimeRecordingHandler.directoryPath();
+    }
     await realtimeRecordingHandler.recordHandler();
 
     String audioCount = (realtimeRecordingHandler.getrecordedRealtimeCount-1).toString();
@@ -35,20 +39,21 @@ class Realtime {
     print("prediction value: "+prediction.theValue.toString());
     // is the audio speech at all and not noise?
     // then verify the high confidance in prediction
-    if (yamnetPrediction.theLabel.contains("speech") == true && prediction.theLabel.contains("noise") == false && prediction.theValue == 1.0) {
-      print("VALID");
+    if (yamnetPrediction.theLabel == "Speech" && prediction.theLabel.contains("noise") == false && prediction.theValue == 1.0) {
       if (actionable == true && prediction.theLabel != 'ava') {
         actionable = false;
         if (wasItPlaying == true) {
-          processCommand(prediction.theLabel);
-          print("DEACTIVATED");
+          // play the music again
         }
+        processCommand(prediction.theLabel);
+        print("\x1B[32mDEACTIVATED\x1B[0m");
       } else if (actionable == false && prediction.theLabel == 'ava') {
-        print("ACTIVATED");
+        print("\x1B[33mACTIVATED\x1B[0m");
         wasItPlaying = isMusicPlaying();
         if (wasItPlaying == true) {
-          actionable = true;
+          // pause the music
         }
+        actionable = true;
       }
     }
   }
