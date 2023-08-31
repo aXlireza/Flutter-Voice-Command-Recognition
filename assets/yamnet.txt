@@ -1,6 +1,13 @@
-hild speech, kid speaking"
-arration, monologue"
-synthesizer
+Speech
+"Child speech, kid speaking"
+Conversation
+"Narration, monologue"
+Babbling
+Speech synthesizer
+Shout
+Bellow
+Whoop
+Yell
 Children shouting
 Screaming
 Whispering
