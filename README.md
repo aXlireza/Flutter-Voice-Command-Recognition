@@ -1,3 +1,2 @@
-# voice_command
+# Realtime Voice Command Recognition
 
-A new Flutter project.
